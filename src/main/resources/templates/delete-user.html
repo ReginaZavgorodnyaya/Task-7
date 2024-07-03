@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete User</title>
+</head>
+<body>
+<h1>Delete User</h1>
+<form id="deleteForm">
+    <label for="id">User ID:</label><br>
+    <input type="number" id="id" name="id" required><br>
+    <input type="submit" value="Delete User">
+    <a href="/">Back</a>
+</form>
+<script>
+    document.getElementById("deleteForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        var id = document.getElementById("id").value;
+        fetch(`/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert('User deleted successfully');
+                } else {
+                    alert('Error deleting user');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+</body>
+</html>

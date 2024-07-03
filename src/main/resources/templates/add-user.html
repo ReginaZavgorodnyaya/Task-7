@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/" lang="en">
+<head>
+    <title>Create User</title>
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+            var name = document.getElementById('name').value;
+            var age = document.getElementById('age').value;
+            var email = document.getElementById('email').value;
+            fetch('/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({name: name, age: age, email: email})
+            })
+                .then(response => {
+                    if (response.status === 201) {
+                        window.location.href = '/'; // редирект на стартовую страницу
+                    } else {
+                        return response.text();
+                    }
+                })
+                .then(data => alert(data))
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+<h2>Create User</h2>
+<form id="createUserForm" onsubmit="submitForm(event)">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="age">Age:</label><br>
+    <input type="number" id="age" name="age"><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email"><br>
+    <input type="submit" value="Create">
+
+    <a href="/">Back</a>
+</form>
+</body>
+</html>
