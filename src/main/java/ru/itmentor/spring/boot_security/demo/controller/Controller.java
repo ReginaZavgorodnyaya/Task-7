@@ -9,7 +9,7 @@ import ru.itmentor.spring.boot_security.demo.service.UserService;
 
 @RequiredArgsConstructor
 @RestController
-public class UserController {
+public class Controller {
 
     private final UserService userService;
 

@@ -1,7 +1,9 @@
-package zavgorodnyaya.spring_boot.service;
+package ru.itmentor.spring.boot_security.demo.service;
 
-import zavgorodnyaya.spring_boot.dto.SaveDto;
-import zavgorodnyaya.spring_boot.model.User;
+
+import ru.itmentor.spring.boot_security.demo.dto.SaveDto;
+import ru.itmentor.spring.boot_security.demo.model.User;
+
 import java.util.List;
 
 public interface UserService {
@@ -13,5 +15,7 @@ public interface UserService {
     void deleteUserById(long id);
 
     void update(long id, SaveDto dto);
+
+    User findByEmail(String name);
 
 }

@@ -3,14 +3,13 @@ package ru.itmentor.spring.boot_security.demo.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.itmentor.spring.boot_security.demo.service.UserService;
 
 
 @RequiredArgsConstructor
 @Controller
-public class WebController {
+public class UserController {
 
     private final UserService userService;
 

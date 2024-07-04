@@ -1,4 +1,4 @@
-package zavgorodnyaya.spring_boot.dto;
+package ru.itmentor.spring.boot_security.demo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

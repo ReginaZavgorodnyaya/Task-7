@@ -1,12 +1,12 @@
-package zavgorodnyaya.spring_boot.service;
+package ru.itmentor.spring.boot_security.demo.service;
 
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import zavgorodnyaya.spring_boot.dto.SaveDto;
-import zavgorodnyaya.spring_boot.model.User;
-import zavgorodnyaya.spring_boot.repository.UserRepository;
+import ru.itmentor.spring.boot_security.demo.dto.SaveDto;
+import ru.itmentor.spring.boot_security.demo.model.User;
+import ru.itmentor.spring.boot_security.demo.repository.UserRepository;
 
 import java.util.List;
 
@@ -17,13 +17,11 @@ public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
 
     @Transactional
-    @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
     @Transactional
-    @Override
     public void save(SaveDto dto) {
         User user = new User();
         user.setName(dto.getName());
@@ -33,18 +31,21 @@ public class UserServiceImpl implements UserService{
     }
 
     @Transactional
-    @Override
     public void deleteUserById(long id) {
         userRepository.deleteById(id);
     }
 
     @Transactional
-    @Override
     public void update(long id, SaveDto dto) {
         User user = new User();
         user.setName(dto.getName());
         user.setAge(dto.getAge());
         user.setEmail(dto.getEmail());
         userRepository.save(user);
+    }
+
+    @Transactional
+    public User findByEmail(String name){
+        return userRepository.findByEmail(name).orElseThrow();
     }
 }
